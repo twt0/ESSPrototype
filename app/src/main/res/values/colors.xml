@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nav drawer profile -->
+    <color name="colorPrimary">#42A5F5</color>
+    <color name="colorPrimaryDark">#1E88E5</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#FF80AB</color>
+    <!-- status/ toolbar -->
+    <color name="primary">#3F51B5</color>
+    <color name="primaryDark">#3949AB</color>
+    <color name="button_color">#4285f4</color>
+</resources>

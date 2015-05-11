@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context="androidhive.info.materialdesign.activity.HomeFragment">
+
+
+    <TextView
+        android:id="@+id/textView333333"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="image"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:id="@+id/te"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="text view"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <vs.com.essprototype.DashboardLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="205dp"
+            android:background="#f8f9fe" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="23dp"
+                android:drawableTop="@drawable/ic_home"
+                android:text="Reminder"
+                style="@style/DashboardButton" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/ic_home"
+                android:text="Course" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button3"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="31dp"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/ic_home"
+                android:text="Announcement" />
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button3"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="31dp"
+                style="@style/DashboardButton"
+                android:drawableTop="@drawable/ic_home"
+                android:text="Settings" />
+
+        </vs.com.essprototype.DashboardLayout>
+    </LinearLayout>
+
+
+
+
+    \
+
+</RelativeLayout>
