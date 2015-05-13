@@ -24,33 +24,30 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
-import com.quinny898.library.persistentsearch.SearchBox;
-import com.quinny898.library.persistentsearch.SearchResult;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class sEmplyee extends ActionBarActivity implements View.OnClickListener {
-    private SearchBox search;
     boolean isFiltered = false;
-    private ListView lv;
-    private Toolbar mToolbar;
-    private Button btn;
-    private EditText edt;
-    private ArrayList<String> selected = new ArrayList<>();
     String products[] = {"Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
             "iPhone 4S", "Samsung Galaxy Note 800",
             "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro"};
     // Listview Adapter
     ArrayAdapter<String> adapter;
-
     // Search EditText
     EditText inputSearch;
     ArrayList<HashMap<String, String>> productList;
+    private ListView lv;
+    private Toolbar mToolbar;
+    private Button btn;
+    private EditText edt;
+    private ArrayList<String> selected = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,11 +237,11 @@ public class sEmplyee extends ActionBarActivity implements View.OnClickListener 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1234 && resultCode == RESULT_OK) {
+        /*if (requestCode == 1234 && resultCode == RESULT_OK) {
             ArrayList<String> matches = data
                     .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             search.populateEditText(matches);
-        }
+        }*/
         super.onActivityResult(requestCode, resultCode, data);
     }
 
