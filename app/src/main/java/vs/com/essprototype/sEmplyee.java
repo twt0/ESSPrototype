@@ -1,25 +1,18 @@
 package vs.com.essprototype;
 
 import android.content.Intent;
-import android.speech.RecognizerIntent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.SparseBooleanArray;
-import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListAdapter;
@@ -139,90 +132,7 @@ public class sEmplyee extends ActionBarActivity implements View.OnClickListener 
                 });
             }
         });
-    /*    search = (SearchBox) findViewById(R.id.searchbox);
-        search.setLogoText("Search For Employee");
-        search.enableVoiceRecognition(this);
 
-        search.setMenuListener(new SearchBox.MenuListener() {
-
-            @Override
-            public void onMenuClick() {
-                //Hamburger has been clicked
-                Toast.makeText(sEmplyee.this, "Menu click", Toast.LENGTH_LONG).show();
-            }
-
-        });
-        search.setSearchListener(new SearchBox.SearchListener() {
-
-            @Override
-            public void onSearchOpened() {
-                SparseBooleanArray checked = lv.getCheckedItemPositions();
-                for (int i = 0; i < products.length; i++) {
-                    if (checked.get(i) == true) {
-                        Object o =getAdapter().getItem(i);
-                        String name = o.toString();
-                        // if the arraylist does not contain the name, add it
-                        if (selected.contains(name)){
-                            // Do Nothing
-                        } else {
-                            selected.add(name);
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onSearchClosed() {
-
-                // Uncheck everything:
-                for (int i = 0; i < lv.getCount(); i++){
-                    lv.setItemChecked(i, false);
-                }
-
-                adapter.getFilter().filter(search.getSearchText(), new Filter.FilterListener() {
-                    public void onFilterComplete(int count) {
-                        adapter.notifyDataSetChanged();
-
-                        for (int i = 0; i < adapter.getCount(); i ++) {
-                            // if the current (filtered)
-                            // listview you are viewing has the name included in the list,
-                            // check the box
-                            Object o = getAdapter().getItem(i);
-                            String name = o.toString();
-                            if (selected.contains(name)) {
-                                lv.setItemChecked(i, true);
-                            } else {
-                                lv.setItemChecked(i, false);
-                            }
-                        }
-
-                    }
-                });
-            }
-
-            @Override
-            public void onSearchTermChanged() {
-                adapter.getFilter().filter(search.getSearchText());
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onSearch(String searchTerm) {
-
-                SearchResult option = new SearchResult(searchTerm, getResources().getDrawable(R
-                        .drawable.ic_history));
-                search.addSearchable(option);
-                isFiltered = true;
-
-            }
-
-            @Override
-            public void onSearchCleared() {
-                adapter.notifyDataSetChanged();
-            }
-
-        });*/
         btn = (Button) findViewById(R.id.done);
         btn.setOnClickListener(this);
 
@@ -237,11 +147,7 @@ public class sEmplyee extends ActionBarActivity implements View.OnClickListener 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        /*if (requestCode == 1234 && resultCode == RESULT_OK) {
-            ArrayList<String> matches = data
-                    .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            search.populateEditText(matches);
-        }*/
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 

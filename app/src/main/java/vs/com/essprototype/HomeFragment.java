@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +28,11 @@ import java.util.List;
 
 
 public class HomeFragment extends Fragment {
+    private static final String TRANSLATION_Y = "translationY";
     private boolean expanded = false;
     private ImageButton fab ;
     private TextView txt,txt2,txt3;
+    private Button btn1, btn2, btn3, btn4;
     private View fabAction1;
     private View fabAction2;
     private View fabAction3;
@@ -37,6 +40,7 @@ public class HomeFragment extends Fragment {
     private float offset1;
     private float offset2;
     private float offset3;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -56,6 +60,45 @@ public class HomeFragment extends Fragment {
         if (currentapiVersion == Build.VERSION_CODES.LOLLIPOP){
 
             final ViewGroup fabContainer = (ViewGroup) rootView.findViewById(R.id.fab_container);
+            btn1 = (Button) rootView.findViewById(R.id.button1);
+            btn2 = (Button) rootView.findViewById(R.id.button2);
+            btn3 = (Button) rootView.findViewById(R.id.button3);
+            btn4 = (Button) rootView.findViewById(R.id.button4);
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragment = new PersonalLeaveFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container_body, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+            btn3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragment = new OnBehalfLeaveFragment();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container_body, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+            btn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragment = new Supervisorleave();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container_body, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+
+
             fab = (ImageButton) rootView.findViewById(R.id.fab);
             fabAction1 = rootView.findViewById(R.id.fab_action_1);
             fabAction2 = rootView.findViewById(R.id.fab_action_2);
@@ -182,8 +225,6 @@ public class HomeFragment extends Fragment {
         animatorSet.start();
         animateFab();
     }
-
-    private static final String TRANSLATION_Y = "translationY";
 
     private Animator createCollapseAnimator(View view, float offset) {
         return ObjectAnimator.ofFloat(view, TRANSLATION_Y, 0, offset)
