@@ -55,48 +55,48 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        getActivity().setTitle("Home");
+        btn1 = (Button) rootView.findViewById(R.id.button1);
+        btn2 = (Button) rootView.findViewById(R.id.button2);
+        btn3 = (Button) rootView.findViewById(R.id.button3);
+        btn4 = (Button) rootView.findViewById(R.id.button4);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new PersonalLeaveFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_body, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new OnBehalfLeaveFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_body, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new Supervisorleave();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container_body, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-        if (currentapiVersion == Build.VERSION_CODES.LOLLIPOP){
+        if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {
 
             final ViewGroup fabContainer = (ViewGroup) rootView.findViewById(R.id.fab_container);
-            btn1 = (Button) rootView.findViewById(R.id.button1);
-            btn2 = (Button) rootView.findViewById(R.id.button2);
-            btn3 = (Button) rootView.findViewById(R.id.button3);
-            btn4 = (Button) rootView.findViewById(R.id.button4);
-            btn1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fragment = new PersonalLeaveFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container_body, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-            });
-            btn3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fragment = new OnBehalfLeaveFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container_body, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-            });
-            btn2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fragment = new Supervisorleave();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container_body, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-            });
 
 
             fab = (ImageButton) rootView.findViewById(R.id.fab);
@@ -182,10 +182,6 @@ public class HomeFragment extends Fragment {
             // do something for phones running an SDK before froyo
         }
 
-
-
-
-        // Inflate the layout for this fragment
         return rootView;
     }
 
