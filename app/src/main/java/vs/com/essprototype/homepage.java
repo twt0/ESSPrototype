@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -60,6 +61,7 @@ public class homepage extends ActionBarActivity implements FragmentDrawer.Fragme
         if (id == R.id.action_settings) {
             return true;
         }
+
 
         if(id == R.id.action_search){
             Toast.makeText(getApplicationContext(), "Search action is selected!", Toast.LENGTH_SHORT).show();

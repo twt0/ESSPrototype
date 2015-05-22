@@ -1,6 +1,7 @@
 package vs.com.essprototype;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -47,7 +48,7 @@ public class sEmplyee extends ActionBarActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_emplyee);
         setTitle("Select Employee");
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+       /* mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             mToolbar.setNavigationIcon(R.drawable.ic_action_back);
@@ -57,8 +58,9 @@ public class sEmplyee extends ActionBarActivity implements View.OnClickListener 
                     onBackPressed();
                 }
             });
-        }
-
+        }*/
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -162,6 +164,12 @@ public class sEmplyee extends ActionBarActivity implements View.OnClickListener 
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == android.R.id.home) {
+
+            onBackPressed();
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
