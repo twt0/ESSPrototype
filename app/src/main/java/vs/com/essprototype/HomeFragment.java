@@ -93,10 +93,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-        if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {
+        // int currentapiVersion = android.os.Build.VERSION.SDK_INT;
+        //if (currentapiVersion >= Build.VERSION_CODES.LOLLIPOP) {
 
-            final ViewGroup fabContainer = (ViewGroup) rootView.findViewById(R.id.fab_container);
+           /* final ViewGroup fabContainer = (ViewGroup) rootView.findViewById(R.id.fab_container);
 
 
             fab = (ImageButton) rootView.findViewById(R.id.fab);
@@ -177,10 +177,10 @@ public class HomeFragment extends Fragment {
                     fabAction3.setTranslationY(offset3);
                     return true;
                 }
-            });
-        } else{
-            // do something for phones running an SDK before froyo
-        }
+            });*/
+//        } else{
+//            // do something for phones running an SDK before froyo
+//        }
 
         return rootView;
     }

@@ -30,6 +30,7 @@ public class homepage extends ActionBarActivity implements FragmentDrawer.Fragme
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         drawerFragment = (FragmentDrawer)

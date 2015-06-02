@@ -89,7 +89,7 @@
                 />
             <Button
                 android:id="@+id/date"
-                style="@style/Your.Button"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -100,7 +100,7 @@
 
             <Button
                 android:id="@+id/date1"
-                style="@style/Your.Button"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
