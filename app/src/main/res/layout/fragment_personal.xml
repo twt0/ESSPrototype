@@ -16,8 +16,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
-        android:fillViewport="true"
-        >
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -37,10 +37,10 @@
                 >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
 
-                    android:gravity="center|start"
                     android:orientation="vertical"
                     android:paddingTop="5dp"
                     >
@@ -49,14 +49,14 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="From"
+                        android:textSize="18sp"
 
                         />
 
                     <EditText
                         android:id="@+id/date"
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:text="Date From"
@@ -64,11 +64,11 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
 
-                    android:gravity="center|start"
+                    android:layout_weight="1"
+
                     android:orientation="vertical"
                     android:paddingTop="5dp"
                     >
@@ -77,14 +77,14 @@
                         android:id="@+id/textView9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="To"
+                        android:textSize="18sp"
 
                         />
 
                     <EditText
                         android:id="@+id/date1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:text="Date To"
@@ -92,7 +92,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -101,64 +100,16 @@
                 android:gravity="center|start"
                 android:orientation="vertical"
                 android:paddingTop="5dp"
+
                 >
-
                 <TextView
-
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:text="Current Balance: 0 day(s)"
+                    android:text="Type"
+                    android:textSize="18sp"
 
                     />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="Total Pending: 0 day(s)"
-
-                    />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="Available Balance: 0 day(s)"
-
-                    />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="Cut Off Date:-"
-
-                    />
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center|start"
-                android:orientation="vertical"
-                      android:paddingTop="5dp"
-
-            >
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="Type"
-
-               />
 
                 <Spinner
                     android:id="@+id/spinner"
@@ -166,9 +117,162 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
 
+
                     />
 
-        </LinearLayout>
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="Current Balance:"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="0 day(s)"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="Total Pending:"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="0 day(s)"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="Available Balance:"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="0 day(s)"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="Cut Off Date:"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="-"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="No of Days:"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/cell_shape"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="16sp"/>
+
+                </TableRow>
+            </TableLayout>
+
 
             <LinearLayout android:layout_width="fill_parent"
                           android:layout_height="wrap_content"
@@ -183,8 +287,8 @@
                     android:id="@+id/reason"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-
                     android:text="Reason"
+                    android:textSize="18sp"
 
                    />
 
@@ -203,7 +307,7 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -214,9 +318,9 @@
                 >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-
+                    android:layout_weight="1"
                     android:gravity="center|start"
                     android:orientation="vertical"
                     android:paddingTop="5dp"
@@ -227,15 +331,15 @@
                         android:id="@+id/session"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="Session"
+                        android:textSize="18sp"
 
                         />
 
                     <Spinner
                         android:id="@+id/spinner1"
                         style="@android:style/Widget.Holo.Light.Spinner"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         />
@@ -243,11 +347,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
 
+                    android:layout_weight="1"
                     android:orientation="vertical"
 
 
@@ -257,31 +360,31 @@
                         android:id="@+id/advanced"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="Advanced"
+                        android:textSize="18sp"
 
                         />
 
                     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
                         >
 
                         <RadioButton
                             android:id="@+id/radio_pirates"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:layout_weight="1"
                             android:text="Yes"
 
                             />
 
                         <RadioButton
                             android:id="@+id/radio_ninjas"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:layout_weight="1"
                             android:text="No"
                             />
                     </RadioGroup>
@@ -289,26 +392,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    android:gravity="center|start"
-                    android:orientation="vertical"
-                    android:paddingTop="5dp"
-
-                    >
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="No of Day(s): 0"
-
-                        />
-
-                </LinearLayout>
 
 
             </LinearLayout>
@@ -328,8 +412,8 @@
                     android:id="@+id/backupRelief"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="Backup Relief"
+                    android:textSize="18sp"
 
                     />
 
@@ -338,7 +422,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_marginLeft="10dp"
 
                     android:text="..."
                     />
@@ -349,6 +433,7 @@
                       android:layout_marginBottom="5dp"
                       android:layout_marginLeft="10dp"
                       android:layout_marginRight="10dp"
+                      android:layout_marginTop="5dp"
                       android:gravity="center|start"
                       android:orientation="vertical"
                       android:paddingTop="5dp"
@@ -359,8 +444,9 @@
                 android:id="@+id/medicalref"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-
                 android:hint="Medical References"
+                android:inputType="text"
+                android:maxLines="1"
                 />
         </LinearLayout>
 
@@ -370,6 +456,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center|start"
                 android:orientation="vertical"
                 android:paddingTop="5dp"
@@ -379,9 +466,10 @@
                 <EditText
                     android:id="@+id/Accref"
                     android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-
+                    android:layout_height="wrap_content"
                     android:hint="Accident References"
+                    android:inputType="text"
+                    android:maxLines="1"
                     />
             </LinearLayout>
             <LinearLayout android:layout_width="fill_parent"
@@ -397,16 +485,16 @@
                     android:id="@+id/slip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="Slip"
+                    android:textSize="18sp"
 
                     />
 
                 <Button
                     android:id="@+id/browse"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
 
 
                     android:text="..."
@@ -417,8 +505,10 @@
 
             <LinearLayout android:layout_width="fill_parent"
                           android:layout_height="wrap_content"
+                          android:layout_marginBottom="5dp"
                           android:layout_marginLeft="10dp"
                           android:layout_marginRight="10dp"
+                          android:layout_marginTop="5dp"
                           android:gravity="center|start"
                           android:orientation="horizontal"
                           android:paddingTop="5dp"
@@ -436,39 +526,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
 
-                android:orientation="horizontal"
-                android:paddingTop="5dp"
-
-                >
-
-                <Button
-                    android:id="@+id/submit"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-                    android:text="Submit"
-                    />
-
-                <Button
-                    android:id="@+id/cancel"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-                    android:text="Cancel"
-                    />
-
-            </LinearLayout>
 
             <!--- <Button
                  android:id="@+id/submit"
@@ -484,6 +542,39 @@
 
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+
+        >
+
+        <Button
+            android:id="@+id/submit"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="Submit"
+            />
+
+        <Button
+            android:id="@+id/cancel"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="Cancel"
+            />
+
+    </LinearLayout>
 
 
 </LinearLayout>
