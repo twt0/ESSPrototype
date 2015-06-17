@@ -35,9 +35,16 @@
 
     </LinearLayout>
 
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
 
-
-    <fragment
+        app:menu="@menu/drawer"
+        app:theme="@style/NavigationViewTheme"/>
+    <!-- app:headerLayout="@layout/drawer_header" -->
+    <!--<fragment
         android:id="@+id/fragment_navigation_drawer"
         android:name="vs.com.essprototype.FragmentDrawer"
         android:layout_width="@dimen/nav_drawer_width"
@@ -45,6 +52,6 @@
         android:layout_gravity="start"
         app:layout="@layout/fragment_navigation_drawer"
 
-        tools:layout="@layout/fragment_navigation_drawer" />
+        tools:layout="@layout/fragment_navigation_drawer" /> -->
 
 </android.support.v4.widget.DrawerLayout>

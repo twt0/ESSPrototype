@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homepage"
+            android:checked="true"
+            android:icon="@drawable/ic_home"
+            android:title="home"/>
+        <item
+            android:id="@+id/personal"
+            android:icon="@drawable/ic_home"
+            android:title="Personal Leave Application"/>
+        <item
+            android:id="@+id/onbehalf"
+            android:icon="@drawable/ic_home"
+            android:title="On Behalf Leave Application"/>
+        <item
+            android:id="@+id/supervisor"
+            android:icon="@drawable/ic_home"
+            android:title="Supervisor Leave Application"/>
+    </group>
+
+    <item
+        android:id="@+id/navigation_subheader"
+        android:title="More">
+        <menu>
+            <item
+                android:id="@+id/navigation_sub_item_1"
+                android:icon="@drawable/ic_home"
+                android:title="gg"/>
+            <item
+                android:id="@+id/navigation_sub_item_2"
+                android:icon="@drawable/ic_home"
+                android:title="gg"/>
+        </menu>
+    </item>
+</menu>

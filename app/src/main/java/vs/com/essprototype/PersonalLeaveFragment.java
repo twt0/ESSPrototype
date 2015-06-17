@@ -30,7 +30,7 @@ public class PersonalLeaveFragment extends Fragment {
     private FragmentActivity myContext;
     private Spinner spinner, spinner1, spinner2;
     private Button submit;
-    private EditText btn1, btn2, medicalref, accref, remark;
+    private EditText btn1, btn2;
     private Calendar cal1,cal2;
     DatePickerDialog.OnDateSetListener ondate = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -96,16 +96,8 @@ public class PersonalLeaveFragment extends Fragment {
         btn1 = (EditText) rootView.findViewById(R.id.date);
         btn2 = (EditText) rootView.findViewById(R.id.date1);
 
-        medicalref = (EditText) rootView.findViewById(R.id.medicalref);
-        medicalref.setHint(Html.fromHtml("<small><i>" + "Medical References" + "</i></small>"));
 
-        accref = (EditText) rootView.findViewById(R.id.Accref);
-        accref.setHint(Html.fromHtml("<small><i>" + "Accident References" +
-                "</i></small>"));
 
-        remark = (EditText) rootView.findViewById(R.id.remark);
-        remark.setHint(Html.fromHtml("<small><i>" + "Remark" +
-                "</i></small>"));
 
         btn1.setOnClickListener(new View.OnClickListener() {
 

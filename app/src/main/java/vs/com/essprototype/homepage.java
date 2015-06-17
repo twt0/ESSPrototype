@@ -1,11 +1,16 @@
 package vs.com.essprototype;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,12 +18,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class homepage extends ActionBarActivity implements FragmentDrawer.FragmentDrawerListener{
+public class homepage extends ActionBarActivity {
 
     private static String TAG = homepage.class.getSimpleName();
 
     private Toolbar mToolbar;
-    private FragmentDrawer drawerFragment;
+    private ColorStateList myColorStateList;
+    private NavigationView navigationView;
+    private DrawerLayout mDrawerLayout;
+    //private FragmentDrawer drawerFragment;
 
 
 
@@ -30,17 +38,88 @@ public class homepage extends ActionBarActivity implements FragmentDrawer.Fragme
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        final ActionBar actionBar = getSupportActionBar();
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        myColorStateList = new ColorStateList(
+                new int[][]{
+                        new int[]{android.R.attr.state_checked}, //1
+                        new int[]{android.R.attr.state_focused}, //2
+                        new int[]{android.R.attr.state_focused, android.R.attr
+                                .state_pressed},
+                        new int[]{} //3
+                },
+                new int[]{
+                        Color.RED, //1
+                        Color.GREEN, //2
+                        Color.BLUE,
+                        Color.BLACK//3
+                }
+        );
+        // getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Fragment fragment = new HomeFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container_body, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
-        drawerFragment = (FragmentDrawer)
-                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
-        drawerFragment.setDrawerListener(this);
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+
+                        navigationView.setItemTextColor(myColorStateList);
+                        navigationView.setItemIconTintList(myColorStateList);
+                        Fragment fragment = null;
+                        mDrawerLayout.closeDrawers();
+                        switch (menuItem.getItemId()) {
+                            case R.id.homepage:
+                                fragment = new HomeFragment();
+
+                                break;
+                            case R.id.personal:
+                                fragment = new PersonalLeaveFragment();
+                                break;
+                            case R.id.onbehalf:
+                                fragment = new OnBehalfLeaveFragment();
+                                break;
+                            case R.id.supervisor:
+                                fragment = new Supervisorleave();
+                                break;
+                        }
+                        if (fragment != null) {
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.container_body, fragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+
+                            // set the toolbar title
+
+                        }
+
+
+                        return true;
+                    }
+                });
+
+        //drawerFragment = (FragmentDrawer)
+        //  getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        //drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id
+        //  .drawer_layout), mToolbar);
+        // drawerFragment.setDrawerListener(this);
 
         // display the first navigation drawer view on app launch
 
-        displayView(0);
+        //displayView(0);
     }
 
 
@@ -62,6 +141,10 @@ public class homepage extends ActionBarActivity implements FragmentDrawer.Fragme
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+            return true;
+        }
 
 
         if(id == R.id.action_search){
@@ -72,7 +155,7 @@ public class homepage extends ActionBarActivity implements FragmentDrawer.Fragme
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+   /* @Override
     public void onDrawerItemSelected(View view, int position) {
         displayView(position);
     }
@@ -113,7 +196,7 @@ public class homepage extends ActionBarActivity implements FragmentDrawer.Fragme
             // set the toolbar title
 
         }
-    }
+    }*/
 
 
 
