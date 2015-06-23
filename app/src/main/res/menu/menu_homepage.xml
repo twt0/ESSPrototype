@@ -14,30 +14,5 @@
           android:title="@string/action_settings"
           app:showAsAction="never"/>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/navigation_item_1"
-            android:checked="true"
 
-            android:title="home"/>
-        <item
-            android:id="@+id/navigation_item_2"
-
-            android:title="home"/>
-    </group>
-
-    <item
-        android:id="@+id/navigation_subheader"
-        android:title="More">
-        <menu>
-            <item
-                android:id="@+id/navigation_sub_item_1"
-
-                android:title="gg"/>
-            <item
-                android:id="@+id/navigation_sub_item_2"
-
-                android:title="gg"/>
-        </menu>
-    </item>
 </menu>

@@ -92,7 +92,7 @@ public class PersonalLeaveFragment extends Fragment {
                              Bundle savedInstanceState) {
         formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
         View rootView = inflater.inflate(R.layout.fragment_personal, container, false);
-        getActivity().setTitle("On behalf Leave");
+
         btn1 = (EditText) rootView.findViewById(R.id.date);
         btn2 = (EditText) rootView.findViewById(R.id.date1);
 

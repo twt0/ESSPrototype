@@ -14,28 +14,75 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class OnBehalfLeaveFragment extends Fragment {
-    private FragmentActivity myContext;
    // public homepage.InterfaceDataCommunicatorFromActivity interfaceDataCommunicatorFromActivity;
     String data;
+    Format formatter;
+    private FragmentActivity myContext;
     private TextView advanced;
     private Spinner spinner, spinner1, spinner2;
-    private Button btn1, btn2,submit;
+    private EditText btn1, btn2;
+    private Button submit;
     private Calendar cal1,cal2;
+    DatePickerDialog.OnDateSetListener ondate = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+            Date date1 = null;
+
+            try {
+                date1 = sdf.parse(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            cal1 = Calendar.getInstance();
+            cal1.setTime(date1);
+
+            if (validate()) {
+                btn1.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+            }
+
+        }
+    };
+    DatePickerDialog.OnDateSetListener ondate1 = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+            Date date2 = null;
+            try {
+
+                date2 = sdf.parse(year + "-" + monthOfYear + "-" + dayOfMonth);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            cal2 = Calendar.getInstance();
+            cal2.setTime(date2);
+            if (validate()) {
+                btn2.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+            }
+
+        }
+
+    };
     private Fragment fragment = null;
     private View rootView;
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,23 +95,30 @@ public class OnBehalfLeaveFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_onbehalf, container, false);
         getActivity().setTitle("On behalf Leave");
-        btn1 = (Button) rootView.findViewById(R.id.date);
-        btn2 = (Button) rootView.findViewById(R.id.date1);
+        formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        btn1 = (EditText) rootView.findViewById(R.id.date);
+        btn2 = (EditText) rootView.findViewById(R.id.date1);
         advanced = (TextView) rootView.findViewById(R.id.advanced);
-        rootView.findViewById(R.id.date).setOnClickListener(new View.OnClickListener() {
+
+        btn1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 showDatePicker();
             }
         });
-        rootView.findViewById(R.id.date1).setOnClickListener(new View.OnClickListener() {
+        btn2.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 showDatePicker1();
             }
         });
+
+        Calendar cal = Calendar.getInstance();
+        btn1.setText(formatter.format(cal.getTime()));
+        btn2.setText(formatter.format(cal.getTime()));
+
         spinner = (Spinner) rootView.findViewById(R.id.spinner);
         spinner1 = (Spinner) rootView.findViewById(R.id.spinner1);
         spinner2 = (Spinner) rootView.findViewById(R.id.spinner2);
@@ -82,14 +136,14 @@ public class OnBehalfLeaveFragment extends Fragment {
         spinner2.setAdapter(adapter1);
         // Inflate the layout for this fragment
 
-        submit = (Button) rootView.findViewById(R.id.submit);
+   /*     submit = (Button) rootView.findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(getActivity(), sEmplyee.class);
                startActivityForResult(myIntent, 2);
             }
-        });
+        });*/
 
         // Inflate the layout for this fragment
 
@@ -113,33 +167,6 @@ public class OnBehalfLeaveFragment extends Fragment {
         date.show(myContext.getSupportFragmentManager(), "Date Picker");
     }
 
-    DatePickerDialog.OnDateSetListener ondate = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date1 = null;
-
-            try {
-                date1 = sdf.parse(year + "-" + monthOfYear + "-" + dayOfMonth);
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            cal1 = Calendar.getInstance();
-
-            cal1.setTime(date1);
-
-
-
-            if (validate()) {
-                btn1.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
-            }
-
-        }
-    };
-
     private void showDatePicker1() {
         DatePickerFragment date = new DatePickerFragment();
         /**
@@ -158,27 +185,7 @@ public class OnBehalfLeaveFragment extends Fragment {
         date.show(myContext.getSupportFragmentManager(), "Date Picker");
     }
 
-    DatePickerDialog.OnDateSetListener ondate1 = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date2 = null;
-            try {
 
-                date2 = sdf.parse(year + "-" + monthOfYear + "-" + dayOfMonth);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            cal2 = Calendar.getInstance();
-            cal2.setTime(date2);
-            if (validate()) {
-                btn2.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
-            }
-
-        }
-
-    };
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -218,7 +225,7 @@ public class OnBehalfLeaveFragment extends Fragment {
         return false;
     }
 
-  @Override
+  /*@Override
     public  void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==2 )
@@ -246,5 +253,5 @@ public class OnBehalfLeaveFragment extends Fragment {
 
 
         }
-    }
+    }*/
 }
