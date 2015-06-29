@@ -33,7 +33,7 @@ public class OnBehalfLeaveFragment extends Fragment {
     Format formatter;
     private FragmentActivity myContext;
     private TextView advanced;
-    private Spinner spinner, spinner1, spinner2;
+    private Spinner spinner1, spinner2;
     private EditText btn1, btn2;
     private Button submit;
     private Calendar cal1,cal2;
@@ -99,7 +99,14 @@ public class OnBehalfLeaveFragment extends Fragment {
         btn1 = (EditText) rootView.findViewById(R.id.date);
         btn2 = (EditText) rootView.findViewById(R.id.date1);
         advanced = (TextView) rootView.findViewById(R.id.advanced);
-
+        submit = (Button) rootView.findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), sEmplyee.class);
+                getActivity().startActivity(intent);
+            }
+        });
         btn1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -119,19 +126,18 @@ public class OnBehalfLeaveFragment extends Fragment {
         btn1.setText(formatter.format(cal.getTime()));
         btn2.setText(formatter.format(cal.getTime()));
 
-        spinner = (Spinner) rootView.findViewById(R.id.spinner);
+
         spinner1 = (Spinner) rootView.findViewById(R.id.spinner1);
         spinner2 = (Spinner) rootView.findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.selection_array, android.R.layout.simple_spinner_item);
+
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.reason_array, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.session_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+
         spinner1.setAdapter(adapter1);
         spinner2.setAdapter(adapter1);
         // Inflate the layout for this fragment

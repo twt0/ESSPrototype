@@ -10,50 +10,68 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/container_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editText3"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginStart="20dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                android:drawableLeft="@drawable/ic_action_search2"
-                android:hint="Search For Employee"/>
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
+                    android:drawableLeft="@drawable/ic_action_search2"
+                    android:hint="Search For Employee"/>
 
-        <ListView
-                android:id="@+id/list_view"
-                android:layout_width="fill_parent"
-                android:layout_height="350dp" />
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="350dp"/>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
 
-            <Button
-                android:id="@+id/done"
+                <Button
+                    android:id="@+id/done"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="21dp"
-                android:text="Done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="21dp"
+                    android:text="Done"
 
-                android:textColor="#ffffff"/>
+                    android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>
