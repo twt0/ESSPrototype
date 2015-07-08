@@ -21,46 +21,77 @@
                 layout="@layout/toolbar"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_marginStart="10dp"
+                android:drawableLeft="@drawable/ic_action_search2"
+                android:hint="Search For Employee"/>
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editText3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginStart="20dp"
-                    android:drawableLeft="@drawable/ic_action_search2"
-                    android:hint="Search For Employee"/>
+                android:layout_height="375dp"
+                android:orientation="vertical"
+                >
 
                 <ListView
                     android:id="@+id/list_view"
-                    android:layout_width="fill_parent"
-                    android:layout_height="350dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
 
+            </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            >
+
+            <TextView
+                android:id="@+id/selectedCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:text="Selected: 0(s)"
+                android:textSize="18sp"
+                />
                 <Button
                     android:id="@+id/done"
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="21dp"
+                    android:layout_weight="1"
+
                     android:text="Done"
 
                     android:textColor="#ffffff"/>
@@ -68,10 +99,10 @@
             </LinearLayout>
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 
     </LinearLayout>
 
 
-</LinearLayout>
+

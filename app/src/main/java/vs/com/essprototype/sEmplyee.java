@@ -1,11 +1,9 @@
 package vs.com.essprototype;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.NavUtils;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,39 +22,35 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class sEmplyee extends ActionBarActivity {
-    boolean isFiltered = false;
     String products[] = {"Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
-            "iPhone 4S", "Samsung Galaxy Note 800",
-            "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro"};
-    // Listview Adapter
-    //ArrayAdapter<String> adapter;
-    // Search EditText
-    EditText inputSearch;
-    ArrayList<HashMap<String, String>> productList;
+            "iPhone 4S", "Samsung Galaxy Note 800", "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro"};
 
     private Toolbar mToolbar;
-    private Button btn;
     private EditText edt;
-    private ArrayList<String> selected = new ArrayList<>();
+    private int position;
+
+
     private CustomAdapter adapter;
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_emplyee);
+
         setTitle("Select Employee");
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         if (mToolbar != null) {
@@ -65,6 +59,7 @@ public class sEmplyee extends ActionBarActivity {
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     onBackPressed();
                 }
             });
@@ -92,14 +87,13 @@ public class sEmplyee extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                StringBuilder result = new StringBuilder();
-                for (int i = 0; i < adapter.mCheckStates.size(); i++) {
-                    if (adapter.mCheckStates.get(i) == true) {
-                        result.append(products[i]);
-                        result.append("\n");
+                String result = "";
+                for (int i = 0; i < adapter.getCount(); i++) {
+                    if (adapter.mCheckStates.valueAt(i)) {
+                        result += " " + products[adapter.mCheckStates.keyAt(i)];
                     }
-
                 }
+                
                 Toast.makeText(sEmplyee.this, result, Toast.LENGTH_SHORT).show();
             }
 
@@ -195,7 +189,6 @@ public class sEmplyee extends ActionBarActivity {
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -227,8 +220,7 @@ public class sEmplyee extends ActionBarActivity {
 //    }
 
 
-    private class CustomAdapter extends BaseAdapter implements CompoundButton
-            .OnCheckedChangeListener, Filterable {
+    private class CustomAdapter extends BaseAdapter implements Filterable {
         String[] products;
         ArrayList<String> stringlol;
         ArrayList<String> defaultList;
@@ -240,11 +232,12 @@ public class sEmplyee extends ActionBarActivity {
             this.context = context;
             stringlol = new ArrayList<String>();
             defaultList = new ArrayList<String>();
-            mCheckStates = new SparseBooleanArray(stringlol.size());
-            for (int i = 0; i < products.length; i++) {
-                stringlol.add(products[i]);
-                defaultList.add(products[i]);
+
+            for (String product : products) {
+                stringlol.add(product);
+                defaultList.add(product);
             }
+            mCheckStates = new SparseBooleanArray();
         }
 
         @Override
@@ -269,6 +262,7 @@ public class sEmplyee extends ActionBarActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             // TODO Auto-generated method stub
             View vi = convertView;
+
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             if (convertView == null)
                 vi = inflater.inflate(R.layout.list_item, null);
@@ -278,8 +272,20 @@ public class sEmplyee extends ActionBarActivity {
             CheckBox cb = (CheckBox) vi.findViewById(R.id.check);
             cb.setTag(position);
             cb.setChecked(mCheckStates.get(position, false));
-            //cBox.setChecked(mChecked[position]);
-            cb.setOnCheckedChangeListener(this);
+
+            cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    SharedPreferences.Editor editor = getSharedPreferences("LOL", MODE_PRIVATE).edit();
+                    // editor.clear();
+
+//                    editor.putInt("pos" +position, position);
+//                        editor.putBoolean("value" +position, isChecked);
+//
+//                    editor.apply();   // I missed to save the data to preference here,.
+                    mCheckStates.put((Integer) buttonView.getTag(), isChecked);
+                }
+            });
             TextView title = (TextView) vi.findViewById(R.id.product_name);
 
             title.setText(stringlol.get(position));
@@ -288,10 +294,6 @@ public class sEmplyee extends ActionBarActivity {
                     R.array.reason_array, android.R.layout.simple_spinner_item);
 
             spinner.setAdapter(adapter2);
-//
-//
-//
-//
             return vi;
         }
 
@@ -309,10 +311,6 @@ public class sEmplyee extends ActionBarActivity {
 
         }
 
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            mCheckStates.put((Integer) buttonView.getTag(), isChecked);
-        }
 
         @Override
         public Filter getFilter() {

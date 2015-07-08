@@ -28,7 +28,6 @@ import java.util.Locale;
 
 
 public class OnBehalfLeaveFragment extends Fragment {
-   // public homepage.InterfaceDataCommunicatorFromActivity interfaceDataCommunicatorFromActivity;
     String data;
     Format formatter;
     private FragmentActivity myContext;
@@ -104,6 +103,7 @@ public class OnBehalfLeaveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), sEmplyee.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 getActivity().startActivity(intent);
             }
         });

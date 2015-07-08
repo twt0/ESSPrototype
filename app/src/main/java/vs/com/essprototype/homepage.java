@@ -26,10 +26,6 @@ public class homepage extends ActionBarActivity {
     private ColorStateList myColorStateList;
     private NavigationView navigationView;
     private DrawerLayout mDrawerLayout;
-    //private FragmentDrawer drawerFragment;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +55,6 @@ public class homepage extends ActionBarActivity {
                         Color.BLACK//3
                 }
         );
-        // getSupportActionBar().setDisplayShowHomeEnabled(true);
         Fragment fragment = new HomeFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -111,15 +106,6 @@ public class homepage extends ActionBarActivity {
                     }
                 });
 
-        //drawerFragment = (FragmentDrawer)
-        //  getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        //drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id
-        //  .drawer_layout), mToolbar);
-        // drawerFragment.setDrawerListener(this);
-
-        // display the first navigation drawer view on app launch
-
-        //displayView(0);
     }
 
 
@@ -155,48 +141,7 @@ public class homepage extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-   /* @Override
-    public void onDrawerItemSelected(View view, int position) {
-        displayView(position);
-    }
 
-    private void displayView(int position) {
-        Fragment fragment = null;
-        Bundle bundle = new Bundle();
-        int id;
-        switch (position) {
-            case 0:
-                fragment = new HomeFragment();
-
-                break;
-            case 1:
-                fragment = new PersonalLeaveFragment();
-
-
-                break;
-            case 2:
-                fragment = new OnBehalfLeaveFragment();
-
-                break;
-            case 3:
-                fragment = new Supervisorleave();
-
-                break;
-            default:
-                break;
-        }
-
-        if (fragment != null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_body, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-
-            // set the toolbar title
-
-        }
-    }*/
 
 
 
